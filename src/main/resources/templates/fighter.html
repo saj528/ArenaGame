@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${fighter.name}"></title>
+</head>
+<body>
+<h1>Fighter</h1>
+
+<form action="/update-fighter" method="post">
+    <input type="hidden" th:field="${fighter.id}"/>
+    Name: <input th:field="${fighter.name}"/>
+    Description: <input th:field="${fighter.description}"/>
+    <input type="submit" value="Update Fighter">
+</form>
+<h2>Stats</h2>
+<div>
+    <div>
+        Health Points: <span th:text="${fighter.hp}"></span>
+    </div>
+    <div>
+        Attack Damage: <span th:text="${fighter.attack_damage}"></span>
+    </div>
+    <div>
+        Level: <span th:text="${fighter.level}"></span>
+    </div>
+    <div>
+        Experience Points: <span th:text="${fighter.xp}"></span>/100
+    </div>
+    <div>
+        Current Status: <span th:text="${fighter.alive == true ? 'Alive' : 'Dead'}"></span>
+    </div>
+
+</div>
+<form th:action="@{/fighters/{fighterId}/delete(fighterId=${fighter.id})}" method="post">
+    <input type="submit" value="Delete Fighter">
+</form>
+</div>
+</body>

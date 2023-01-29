@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create a Fighter</title>
+</head>
+<body>
+<form action="" method="post">
+    <div>
+        Fighter Name: <input type="text" th:field="${fighter.name}" />
+    </div>
+    <div>
+        Describe the fighter: <input type="text" th:field="${fighter.description}" />
+    </div>
+    <div>
+        <select th:field="*{fighter.user}" >
+            <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.username}"></option>
+        </select>
+    </div>
+    <div>
+        <input type="submit" value="Create Fighter">
+    </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${user.username}"></title>
+</head>
+<body>
+<h1>User</h1>
+
+<form action="/update-user" method="post" >
+    <input type="hidden" th:field="${user.id}"/>
+    Username: <input th:field="${user.username}"/>
+    Password: <input th:field="${user.password}"/>
+    <input type="submit" value="Update User">
+</form>
+<form th:action="@{/users/{userId}/delete(userId=${user.id})}" method="post">
+    <input type="submit" value="Delete User">
+</form>
+</div>
+</body>
+</html>
