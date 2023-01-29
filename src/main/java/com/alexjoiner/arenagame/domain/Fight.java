@@ -12,7 +12,8 @@ public class Fight {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private List<String> fightEvents = new ArrayList<>();
+    @OneToMany(mappedBy = "fight", cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+    private List<FightEvent> fightEvents = new ArrayList<>();
 
     @ManyToMany(mappedBy = "fights")
     private List<Fighter> fighters = new ArrayList<>();
@@ -25,11 +26,11 @@ public class Fight {
         this.id = id;
     }
 
-    public List<String> getFightEvents() {
+    public List<FightEvent> getFightEvents() {
         return fightEvents;
     }
 
-    public void setFightEvents(List<String> fightEvents) {
+    public void setFightEvents(List<FightEvent> fightEvents) {
         this.fightEvents = fightEvents;
     }
 

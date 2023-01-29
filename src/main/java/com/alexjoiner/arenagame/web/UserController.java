@@ -17,6 +17,11 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @GetMapping("/")
+    public String getMainPage(){
+        return "main";
+    }
+
     @GetMapping("/users")
     public String getUser (ModelMap modelMap){
         List<User> users = userService.findAll();
