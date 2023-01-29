@@ -1,8 +1,11 @@
 package com.alexjoiner.arenagame.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
+@Table(name = "Fighter")
 public class Fighter {
 
     @Id
@@ -18,6 +21,15 @@ public class Fighter {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "fighter_fight",
+            joinColumns = @JoinColumn(name = "fighter_id"),
+            inverseJoinColumns = @JoinColumn(name = "fight_id")
+
+    )
+    private List<Fight> fights = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -91,4 +103,11 @@ public class Fighter {
         this.user = user;
     }
 
+    public List<Fight> getFights() {
+        return fights;
+    }
+
+    public void setFights(List<Fight> fights) {
+        this.fights = fights;
+    }
 }
