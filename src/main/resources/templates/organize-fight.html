@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Organize Fight</title>
 </head>
 <body>
+<h1>Organize a Fight</h1>
+<h3>Choose Your Fighters</h3>
+<form action="" method="post">
+    <select th:field="${fight.fighters[0]}" >
+        <option th:each="fighter: ${fighters}" th:value="${fighter.id}" th:text="${fighter.name}"></option>
+    </select>
+    <select th:field="${fight.fighters[1]}" >
+        <option th:each="fighter: ${fighters}" th:value="${fighter.id}" th:text="${fighter.name}"></option>
+    </select>
+    <div>
+        <input type="submit" value="Organize Fight">
+    </div>
+</form>
 
 </body>
 </html>

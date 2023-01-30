@@ -17,13 +17,13 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public User save(User pizza) {
+    public User save(User user) {
 
-        return userRepository.save(pizza);
+        return userRepository.save(user);
     }
 
-    public User findById(Long pizzaId) {
-        return userRepository.findById(pizzaId).get();
+    public User findById(Long userId) {
+        return userRepository.findById(userId).get();
     }
 
     public void delete(Long userId) {

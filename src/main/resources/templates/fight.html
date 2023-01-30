@@ -5,12 +5,10 @@
     <title>Fighters</title>
 </head>
 <body>
-<h1>Fighters</h1>
-<div th:each="fighter : ${fighters}">
-    <span ><a th:href="@{/fighters/{fighterId}(fighterId=${fighter.id})}" th:text="${fighter.name}"></a></span>
-    <span ><a th:href="@{/fighters/{fighterId}(fighterId=${fighter.id})}" th:text="${fighter.user.id}"></a></span>
-</div>
-<a href="/add-fighter">Add Fighter</a>
-<a href="/fight">Start an Arena Fight</a>
+<h1>Fight: <span th:text="${fight.id}"></span></h1>
+<h3>Fight Rounds</h3>
+
+<div th:each="round: ${fight.fightEvents}" th:text="${round.fightRound}"></div>
+
 </body>
 </html>
