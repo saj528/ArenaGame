@@ -10,6 +10,7 @@ public class Fighter {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Long id;
     private String name;
     private String description;
@@ -22,12 +23,11 @@ public class Fighter {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany
     @JoinTable(
             name = "fighter_fight",
             joinColumns = @JoinColumn(name = "fighter_id"),
             inverseJoinColumns = @JoinColumn(name = "fight_id")
-
     )
     private List<Fight> fights = new ArrayList<>();
 

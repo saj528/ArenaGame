@@ -1,9 +1,7 @@
 package com.alexjoiner.arenagame.service;
 
 import com.alexjoiner.arenagame.domain.Fight;
-import com.alexjoiner.arenagame.domain.FightEvent;
 import com.alexjoiner.arenagame.domain.Fighter;
-import com.alexjoiner.arenagame.domain.User;
 import com.alexjoiner.arenagame.repository.FightRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,9 +15,6 @@ public class FightService {
     @Autowired
     private FightRepository fightRepository;
 
-    @Autowired
-    private FightEventService fightEventService;
-
     Random random = new Random();
 
     public Fight save(Fight fight) {
@@ -32,7 +27,7 @@ public class FightService {
     }
 
     public void processFight(Fight fight) {
-        int rounds = 3;
+/*        int rounds = 3;
         Fighter fighterOne = CloneFighter(fight.getFighters().get(0));
         Fighter fighterTwo = CloneFighter(fight.getFighters().get(1));
         for(int i = 0; i < rounds;i++){
@@ -48,7 +43,7 @@ public class FightService {
 
             fight.getFightEvents().add(fightEventOne);
             fight.getFightEvents().add(fightEventTwo);
-        }
+        }*/
     }
 
     public Fighter CloneFighter(Fighter fighter){

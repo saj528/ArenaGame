@@ -9,6 +9,7 @@
 <div th:each="fighter : ${fighters}">
     <span ><a th:href="@{/fighters/{fighterId}(fighterId=${fighter.id})}" th:text="${fighter.name}"></a></span>
     <span ><a th:href="@{/fighters/{fighterId}(fighterId=${fighter.id})}" th:text="${fighter.user.id}"></a></span>
+    <span ><a th:href="@{/fighters/{fighterId}(fighterId=${fighter.id})}" th:text="${fighter.id}"></a></span>
 </div>
 <a href="/add-fighter">Add Fighter</a>
 <a href="/fight">Start an Arena Fight</a>
