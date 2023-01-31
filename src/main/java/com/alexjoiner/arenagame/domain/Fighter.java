@@ -19,17 +19,16 @@ public class Fighter {
     private Integer xp;
     private Integer attack_damage;
     private Boolean alive;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToMany
-    @JoinTable(
-            name = "fighter_fight",
-            joinColumns = @JoinColumn(name = "fighter_id"),
-            inverseJoinColumns = @JoinColumn(name = "fight_id")
-    )
-    private List<Fight> fights = new ArrayList<>();
+    @OneToMany(mappedBy = "challenger", cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+    private List<Fight> challengerFights = new ArrayList<>();
+
+    @OneToMany(mappedBy = "defender", cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+    private List<Fight> defenderFights = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -103,11 +102,19 @@ public class Fighter {
         this.user = user;
     }
 
-    public List<Fight> getFights() {
-        return fights;
+    public List<Fight> getChallengerFights() {
+        return challengerFights;
     }
 
-    public void setFights(List<Fight> fights) {
-        this.fights = fights;
+    public void setChallengerFights(List<Fight> challengerFights) {
+        this.challengerFights = challengerFights;
+    }
+
+    public List<Fight> getDefenderFights() {
+        return defenderFights;
+    }
+
+    public void setDefenderFights(List<Fight> defenderFights) {
+        this.defenderFights = defenderFights;
     }
 }

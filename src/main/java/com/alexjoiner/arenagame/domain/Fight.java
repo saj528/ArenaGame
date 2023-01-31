@@ -12,8 +12,11 @@ public class Fight {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToMany(mappedBy = "fights")
-    private List<Fighter> fighters = new ArrayList<>();
+    @ManyToOne
+    private Fighter challenger = new Fighter();
+
+    @ManyToOne
+    private Fighter defender = new Fighter();
 
     public Long getId() {
         return id;
@@ -23,12 +26,19 @@ public class Fight {
         this.id = id;
     }
 
-    public List<Fighter> getFighters() {
-        return fighters;
+    public Fighter getChallenger() {
+        return challenger;
     }
 
-    public void setFighters(List<Fighter> fighters) {
-        this.fighters = fighters;
+    public void setChallenger(Fighter challenger) {
+        this.challenger = challenger;
     }
 
+    public Fighter getDefender() {
+        return defender;
+    }
+
+    public void setDefender(Fighter defender) {
+        this.defender = defender;
+    }
 }
